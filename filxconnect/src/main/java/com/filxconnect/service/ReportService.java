@@ -104,8 +104,12 @@ public class ReportService {
         return 1;
     }
 
-    public Integer changeStatus(UUID id, String status) {
+  public Integer changeStatus(UUID id, String status) {
         Report report = reportRepository.findById(id).orElseThrow();
+        if (status.equals("DISMISSED") && report.getReportedPostId() == null){
+            User user = userRepository.findById(report.getReportedUserId()).orElseThrow(() -> new EntityNotFoundException("User not found"));
+            user.setReports(user.getReports()-1);
+        }
         report.setReportStatus(status);
         reportRepository.save(report);
         return 1;
