@@ -53,4 +53,12 @@ public class Notification {
     public void setMessage(String message) { this.message = message; }
     public void setRead(boolean read) { this.isRead = read; }
     public void setSender(String sender) { this.sender = sender; }
+
+    public void setSenderPic(String senderPic) {
+        this.senderPic = senderPic;
+    }
+
+    public String getSenderPic() {
+        return senderPic;
+    }
 }
