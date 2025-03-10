@@ -14,8 +14,8 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        // Allow requests from your frontend
-        corsConfiguration.setAllowedOrigins(List.of("https://frontend-deploy-fil-userfilconnect-83uu88rdp.vercel.app"));
+        // Allow requests from all domains dynamically
+        corsConfiguration.addAllowedOriginPattern("*");  // ✅ This is better for dynamic frontend URLs
         
         // Allow all HTTP methods
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -23,9 +23,9 @@ public class CorsConfig {
         // Allow common headers
         corsConfiguration.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
         
-        // Allow sending credentials (important for authentication)
+        // Allow credentials (important for authentication)
         corsConfiguration.setAllowCredentials(true);
-        
+
         // Apply CORS settings globally
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
