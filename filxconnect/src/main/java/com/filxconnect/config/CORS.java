@@ -1,5 +1,4 @@
 package com.filxconnect.config;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -10,27 +9,27 @@ import java.util.List;
 
 @Configuration
 public class CorsConfig {
-    
+
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        
-        // Allowed Origins (Update with your frontend URL)
+
+        // Allow requests from your frontend
         corsConfiguration.setAllowedOrigins(List.of("https://frontend-deploy-fil-userfilconnect-83uu88rdp.vercel.app"));
         
-        // Allowed Methods
+        // Allow all HTTP methods
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         
-        // Allowed Headers
+        // Allow common headers
         corsConfiguration.setAllowedHeaders(List.of("Origin", "Content-Type", "Accept", "Authorization"));
         
-        // Allow Credentials (Important for authentication)
+        // Allow sending credentials (important for authentication)
         corsConfiguration.setAllowCredentials(true);
         
-        // Apply CORS settings to all routes
+        // Apply CORS settings globally
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
-        
+
         return new CorsFilter(source);
     }
 }
