@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+@CrossOrigin(origins = "https://fil-x-connect-frontend-kaui71xro-sanskar-sisodias-projects.vercel.app")
 @Configuration
 public class CORS {
     @Bean
