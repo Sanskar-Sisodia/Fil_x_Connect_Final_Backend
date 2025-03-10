@@ -13,7 +13,7 @@ public WebMvcConfigurer corsConfigurer() {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
-                    .allowedOrigins("https://fil-x-connect-frontend-kaui71xro-sanskar-sisodias-projects.vercel.app")
+                    .allowedOrigins("https://fil-x-connect-frontend-kaui71xro-sanskar-sisodias-projects.vercel.app/")
                     .allowedMethods("GET", "POST", "PUT", "DELETE")
                     .allowCredentials(true);
         }
