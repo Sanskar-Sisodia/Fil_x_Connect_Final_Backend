@@ -4,8 +4,8 @@ FROM maven:3.8.8-eclipse-temurin-17 AS builder
 # Set the working directory
 WORKDIR /app
 
-# Copy the project files correctly (since your project is inside filxconnect/filxconnect/)
-COPY filxconnect .
+# Copy the project files (Ensure this is correct for your directory structure)
+COPY . .
 
 # Ensure `pom.xml` is in the correct location
 RUN ls -la /app
