@@ -80,7 +80,15 @@ public class UserController {
         User updatedUser = userService.updateProfilePicture(id,pic);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     }
-    
+    @GetMapping("/checkUser/{id}")
+    public ResponseEntity<User> checkUser(@PathVariable UUID id) {
+        User user = userRepository.findById(id).orElseThrow();
+        if (user.getReports()>3){
+            user.setStatus(0);
+        }
+        userRepository.save(user);
+        return ResponseEntity.ok(user);
+    }
     @Operation(summary = "Approve user", description = "Approves a user's registration.")
     @PutMapping("/approveUser/{id}")
     public ResponseEntity<User> approveUser(@PathVariable UUID id) {
