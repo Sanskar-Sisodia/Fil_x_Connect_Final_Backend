@@ -40,6 +40,14 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
+    @GetMapping("/{email}/changePass/{pass}")
+    public ResponseEntity<User> changePass(@PathVariable String email, @PathVariable String pass) {
+        User user = userRepository.findByEmail(email).orElseThrow();
+        user.setPassword(pass);
+        userRepository.save(user);
+        return ResponseEntity.ok(user);
+    }
+    
     @Operation(summary = "Search users", description = "Queries the User DB")
     @GetMapping("/search/{query}")
     public ResponseEntity<List<User>> searchUsers(@PathVariable String query) {
